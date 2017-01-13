@@ -1,0 +1,1 @@
+c:\users\wecancodeit\documents\visual studio 2015\Projects\Week2Project_FortuneTeller\Week2Project_FortuneTeller\bin\Debug\Week2Project_FortuneTeller.exe.config
