@@ -10,29 +10,43 @@ namespace Week2Project_FortuneTeller
     {
         static void Main(string[] args)
         {
+           
             Console.WriteLine("Welcome to Madame Jen's!");
-            Console.WriteLine("The answer to the mysteries of your future awaits.");
+            Console.WriteLine("The answer to the mystery of your future awaits.");
+            Console.WriteLine("Type \"quit\" to stop or \"restart\" to begin again. Press enter to start.");
+            string quitRestartInput = Console.ReadLine().ToLower();
+            string quitRestartLower = quitRestartInput.ToLower();
 
             Console.WriteLine("What is your first name?");
             string firstName = Console.ReadLine();
-
-            Console.WriteLine("What is your last name?");
+            QuitRestart(firstName);
+                        Console.WriteLine("What is your last name?");
             string lastName = Console.ReadLine();
+            QuitRestart(lastName);//quit restart
 
             Console.WriteLine(HelloMyNameIs(firstName, lastName));
+            QuitRestart(HelloMyNameIs(firstName, lastName));
 
+            //age-retire
             Console.WriteLine("What is your age?");
-            int age = int.Parse(Console.ReadLine());
+            string ageQuitRestart = Console.ReadLine();
+            QuitRestart(ageQuitRestart); //quit restart
+            int age = int.Parse(ageQuitRestart);
+            int retireYears = YearToRetire(age);
 
+            //month-money
             Console.WriteLine("What month were you born? Use numerical value.");
-            int month = int.Parse(Console.ReadLine());
-
+            string monthQuitRestart = Console.ReadLine();
+            QuitRestart(monthQuitRestart);//quit restart
+            int month = int.Parse(monthQuitRestart);
+            
+            //color-transport(car boat etc)
             Console.WriteLine("What is your favorite ROYGBIV color?");
-
             Console.WriteLine("Type Help for a definition of ROYGBIV");
 
             string colorAnswer = Console.ReadLine();
             colorAnswer = colorAnswer.ToLower();
+            QuitRestart(colorAnswer);
 
             if (colorAnswer == "help")
             {
@@ -41,19 +55,25 @@ namespace Week2Project_FortuneTeller
                 Console.WriteLine("What color do you choose?");
                 colorAnswer = Console.ReadLine();
                 colorAnswer = colorAnswer.ToLower();
+                QuitRestart(colorAnswer);
             }
 
+            //number of siblings=vacation home type
             Console.WriteLine("How many siblings do you have?");
-            int siblings = int.Parse(Console.ReadLine());
+            string siblingsQuitRestart = Console.ReadLine();
+            QuitRestart(siblingsQuitRestart); //quit restart
+            int siblings = int.Parse(siblingsQuitRestart);
 
-        
-            Console.WriteLine(firstName + " " + lastName + " will retire in " + YearToRetire(age) + " years" + " with $" + MoneyInBank(month) + " in the bank" + " with" + VacationHome(siblings) + " and " + ToTravel(colorAnswer) + ".");
+            //Fortune response
+            Console.WriteLine(firstName + " " + lastName + " will retire in " + YearToRetire(age) + " years" + " with $" + MoneyInBank(month) + " in the bank" + " with " + VacationHome(siblings) + " and " + ToTravel(colorAnswer) + ".");
             JudgeFortune();
         }
-        //this is the end of static & beginning of class
+        
+//this is the end of static & beginning of class
+
         static string HelloMyNameIs(string firstName, string lastName)
         {
-            string firstAndLastname = ("Greetings " + firstName + lastName + ". I will tell you your fortune!");
+            string firstAndLastname = ("Greetings " + firstName + " " + lastName + ". I will tell you your fortune!");
             return firstAndLastname;
         }
 
@@ -161,16 +181,34 @@ namespace Week2Project_FortuneTeller
             }
         static void JudgeFortune()
         {
-            string great = "What a great fortune!";
-            Console.WriteLine(great);
-                  
+            Console.WriteLine("What a great fortune!");   
+                         
         }
 
+        static void QuitRestart(string quitRestartInput)
+        {
+            string quitRestartLower = quitRestartInput.ToLower();
+            if (quitRestartLower == "quit") 
+            {
+                Console.WriteLine("Thank you for visiting Madame Jen");
+                Environment.Exit(0);
+            }
+            else if (quitRestartLower == "restart")
+            {
+                Console.WriteLine("Restarting");
+                string[] args = { };
+                Console.Clear();
+                Main(args);
+                Environment.Exit(0);
+            }
 
         }
+        
+            
+            
+   }
 
+}
 
-
-        }
     
 
